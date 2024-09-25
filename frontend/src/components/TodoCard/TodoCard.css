@@ -1,0 +1,11 @@
+.card {
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 2px 0px 0px;
+    margin: 0px;
+    width: 100%;
+    text-wrap: nowrap;
+    text-overflow: clip;
+    justify-self: center;
+    align-self: center;
+}
