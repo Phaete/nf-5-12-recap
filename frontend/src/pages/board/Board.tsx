@@ -4,7 +4,7 @@ import Done from "../done/Done.tsx";
 import InProgress from "../in_progress/InProgress.tsx";
 import Open from "../open/Open.tsx";
 import axios from "axios";
-import {ChangeEventHandler, useState} from "react";
+import {useState} from "react";
 
 export default function Board(props : BoardProps) {
 
