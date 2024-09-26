@@ -19,8 +19,11 @@ export default function Board(props : BoardProps) {
         axios.post("/api/todo", {
             description: newTodoDescription,
             status: "OPEN"
+        }).then(() => {
+            props.fetchAll()
+            setNewTodoDescription("")
         })
-        setNewTodoDescription("")
+
     }
 
     return (
@@ -34,23 +37,23 @@ export default function Board(props : BoardProps) {
                         <th className={"tableHeaderItem"}>Done</th>
                     </tr>
                     <tr>
-                        <td className={"vw-25"}>{props.todos.filter((todo) => todo.status === "OPEN").length}</td>
-                        <td className={"vw-25"}>{props.todos.filter((todo) => todo.status === "IN_PROGRESS").length}</td>
-                        <td className={"vw-25"}>{props.todos.filter((todo) => todo.status === "DONE").length}</td>
+                        <td className={"w-33"}>{props.todos.filter((todo) => todo.status === "OPEN").length}</td>
+                        <td className={"w-33"}>{props.todos.filter((todo) => todo.status === "IN_PROGRESS").length}</td>
+                        <td className={"w-33"}>{props.todos.filter((todo) => todo.status === "DONE").length}</td>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                        <td className={"vw-25"}><Open todos={props.todos.filter((todo) => todo.status === "OPEN")}/></td>
-                        <td className={"vw-25"}><InProgress todos={props.todos.filter((todo) => todo.status === "IN_PROGRESS")}/></td>
-                        <td className={"vw-25"}><Done todos={props.todos.filter((todo) => todo.status === "DONE")}/></td>
+                        <td className={"w-33"}><Open todos={props.todos.filter((todo) => todo.status === "OPEN")} fetchAll={props.fetchAll}/></td>
+                        <td className={"w-33"}><InProgress todos={props.todos.filter((todo) => todo.status === "IN_PROGRESS")} fetchAll={props.fetchAll}/></td>
+                        <td className={"w-33"}><Done todos={props.todos.filter((todo) => todo.status === "DONE")} fetchAll={props.fetchAll}/></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
             <form className={"align-right mt-5"} onSubmit={onSubmitNewTodo}>
                 <input id={"todoInput"} name={"todo"} type={"text"} placeholder={"Todo Description"} value={newTodoDescription} onChange={handleInputChange}></input>
-                <button>Add Todo</button>
+                <button>Add Item</button>
             </form>
         </>
     )

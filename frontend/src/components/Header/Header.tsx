@@ -8,18 +8,26 @@ export default function Header() {
 			<div>
 				Navigation:
 				<div className={"navBar"}>
-					<button type={"button"} className={"link"}>
-						<Link to={"/"}>Home</Link>
-					</button>
-					<button type={"button"} className={"link"}>
-						<Link to={"/open"}>Open</Link>
-					</button>
-					<button type={"button"} className={"link"}>
-						<Link to={"/in_progress"}>In Progress</Link>
-					</button>
-					<button type={"button"} className={"link"}>
-						<Link to={"/done"}>Done</Link>
-					</button>
+					<Link to={"/"}>
+						<button type={"button"} className={"link"}>
+							Home
+						</button>
+					</Link>
+					<Link to={"/open"}>
+						<button type={"button"} className={"link"}>
+							Open
+						</button>
+					</Link>
+					<Link to={"/in_progress"}>
+						<button type={"button"} className={"link"}>
+							In Progress
+						</button>
+					</Link>
+					<Link to={"/done"}>
+						<button type={"button"} className={"link"}>
+							Done
+						</button>
+					</Link>
 				</div>
 			</div>
 		</>

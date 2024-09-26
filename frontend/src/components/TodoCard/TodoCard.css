@@ -9,3 +9,24 @@
     justify-self: center;
     align-self: center;
 }
+
+.stacked {
+    display: flex;
+    flex-direction: column;
+}
+
+.m-5 {
+    margin: 5px;
+}
+
+.mt-5 {
+    margin-top: 5px;
+}
+
+.mr-10 {
+    margin-right: 10px;
+}
+
+.ml-10 {
+    margin-left: 10px;
+}

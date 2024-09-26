@@ -3,11 +3,11 @@ import TodoCard from "../../components/TodoCard/TodoCard.tsx";
 
 export default function Open(props : OpenProps) {
 	return (
-		<>
+		<div className={"align-top"}>
 			{props.todos.map((todo) => (
-				<TodoCard id={todo.id} description={todo.description} status={todo.status}/>
+				<TodoCard key={todo.id} todo={todo} fetchAll={props.fetchAll}/>
 			))}
 			{props.todos.length === 0 && <div>No Open Todos</div>}
-		</>
+		</div>
 	)
 }
