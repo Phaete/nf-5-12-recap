@@ -17,26 +17,18 @@ export default function TodoCard(props : TodoCardProps) {
 		setDescription("" + event.currentTarget.value)
 	}
 
-	function handleStatusChange(event: React.FormEvent<HTMLInputElement>) {
+	function handleStatusChange(event: React.FormEvent<HTMLSelectElement>) {
 		console.log(event.currentTarget.value)
-		setStatus(event.currentTarget.value.toUpperCase())
-	}
-
-	function checkValidStatus() {
-		return (status === "OPEN" || status === "IN_PROGRESS" || status === "DONE")
+		setStatus(event.currentTarget.value)
 	}
 
 	function handleSave(event : React.FormEvent<HTMLButtonElement>) : void {
 		event.preventDefault()
-		if (checkValidStatus()) {
-			axios.put(`/api/todo/${props.todo.id}`, {description, status})
-				.then(() => {
-					setCanBeEdited(false)
-					props.fetchAll()
-				})
-		} else {
-			alert("Invalid status")
-		}
+		axios.put(`/api/todo/${props.todo.id}`, {description, status})
+			.then(() => {
+				setCanBeEdited(false)
+				props.fetchAll()
+			})
 	}
 
 	function handleDelete(event : React.FormEvent<HTMLButtonElement>) : void {
@@ -54,8 +46,13 @@ export default function TodoCard(props : TodoCardProps) {
 				</p>
 				<p className={"stacked"}>
 					{props.todo.status}
-					{canBeEdited && <input className={"ml-10 mr-10"} type={"text"} id={props.todo.id} name={"status"}
-                                           placeholder={props.todo.status} onChange={handleStatusChange}/>}
+					{canBeEdited &&
+						<select className={"ml-10 mr-10"} id={props.todo.id} name={"status"}
+											defaultValue={props.todo.status} onChange={handleStatusChange}>
+							<option value={"OPEN"}>Open</option>
+							<option value={"IN_PROGRESS"}>In Progress</option>
+							<option value={"DONE"}>Done</option>
+						</select>}
 				</p>
 				<span>
 					{canBeEdited && <button onClick={handleSave}>Save</button>}
